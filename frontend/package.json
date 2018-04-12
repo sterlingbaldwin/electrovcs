@@ -4,6 +4,7 @@
   "description": "Hackathon project to protoype vcs as a web service with electron ",
   "main": "index.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
