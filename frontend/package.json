@@ -1,0 +1,22 @@
+{
+  "name": "electro-vcs",
+  "version": "0.0.1",
+  "description": "Hackathon project to protoype vcs as a web service with electron ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sterlingbaldwin/electrovcs.git"
+  },
+  "author": "Sterling Baldwin, Charles Doutriaux, James Crean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sterlingbaldwin/electrovcs/issues"
+  },
+  "homepage": "https://github.com/sterlingbaldwin/electrovcs#readme",
+  "dependencies": {
+    "electron": "^1.8.4"
+  }
+}
