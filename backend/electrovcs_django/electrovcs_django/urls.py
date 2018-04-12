@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from viz.views import viz_list
+from viz.views import viz_list, viz_new, viz_run
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^django-pam/', include('django_pam.urls')),
-    url(r'^viz/list', viz_list)
+    url(r'^viz/list/', viz_list),
+    url(r'^viz/new/', viz_new),
+    url(r'^viz/run/', viz_run)
 ]
+

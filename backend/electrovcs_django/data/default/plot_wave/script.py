@@ -2,7 +2,7 @@ import vcs
 import cdms2
 
 # Open data file
-f = cdms2.open('./plot_wave.nc')
+f = cdms2.open('./data/default/plot_wave/plot_wave.nc')
 
 # Get the variable
 s = f("t_dep")
@@ -12,9 +12,6 @@ s = s(latitude = (0, 90.))
 
 # Initialize the canvas
 x = vcs.init()
-
-# Set the size of the canvas
-
 
 # Change the colormap
 x.setcolormap("bl_to_darkred")
