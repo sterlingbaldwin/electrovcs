@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_pam'
 ]
 
 MIDDLEWARE = [
@@ -97,6 +98,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+  'django_pam.auth.backends.PAMBackend',
+  'django.contrib.auth.backends.ModelBackend',
 ]
 
 
