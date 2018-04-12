@@ -11,8 +11,8 @@ from subprocess import Popen, PIPE
 
 def viz_list(request):
     user = request.user
-    if not user.is_authenticated():
-        return HttpResponse(status=401)
+    # if not user.is_authenticated():
+    #     return HttpResponse(status=401)
 
     user_data_path = os.path.abspath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), '..', 'data', user))
@@ -44,8 +44,8 @@ def viz_list(request):
 
 def viz_new(request):
     user = request.user
-    if not user.is_authenticated():
-        return HttpResponse(status=401)
+    # if not user.is_authenticated():
+    #     return HttpResponse(status=401)
     if request.method == 'GET':
         return HttpResponse(status=404)
 
@@ -73,8 +73,8 @@ def viz_new(request):
 
 def viz_run(request):
     user = request.user
-    if not user.is_authenticated():
-        return HttpResponse(status=401)
+    # if not user.is_authenticated():
+    #     return HttpResponse(status=401)
     if request.method == 'GET':
         return HttpResponse(status=404)
 
