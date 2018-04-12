@@ -19,6 +19,7 @@ A frontend interface and backend visualization service for climate data visualiz
 * more stuff
 
 #### How to run the frontend
-* cd into the frontend foler
-* run `npm dev` (This will bundle up the jsx files and watch the files)
+* cd into the frontend folder
+* run `npm install`
+* run `npm run dev` (This will bundle up the jsx files and watch the files)
 * In a new terminal window run `npm start` this will open the electron app using the bundled files
