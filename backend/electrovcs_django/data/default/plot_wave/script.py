@@ -44,4 +44,4 @@ lines.levels = levs
 x.plot(s, lines)
 
 # Save out a PNG file with the results
-x.png('plot_wave.png')
+x.png('./data/default/plot_wave/plot_wave.png')

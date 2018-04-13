@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from viz.views import viz_list, viz_new, viz_run, login
+from viz.views import viz_list, viz_new, viz_run, login, viz_get, viz_save
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^viz/list/', viz_list),
     url(r'^viz/new/', viz_new),
     url(r'^viz/run/', viz_run),
+    url(r'^viz/get/', viz_get),
+    url(r'^viz/save/', viz_save),
     url(r'login/', login)
 ]
 
