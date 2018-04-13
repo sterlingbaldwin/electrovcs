@@ -1,14 +1,42 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import os
 import json
 import shlex
+import pam
+
 from glob import glob
-from __future__ import unicode_literals
-from django.http import HttpResponse
-from django.shortcuts import render
 from subprocess import Popen, PIPE
 
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.shortcuts import render
 
+
+@csrf_exempt
+def login(request):
+    body = json.loads(request.body)
+    username = str(body.get('username'))
+    password = str(body.get('password'))
+    user = authenticate(username, password)
+    if not user:
+        return HttpResponse(status=401)
+    else:
+        return HttpResponse()
+
+def authenticate(username, password):
+    p = pam.pam()
+    if p.authenticate(username, password):
+        try:
+            user = User.objects.get(username=username)
+        except Exception as e:
+            user = User(username=username, password='get from PAM')
+            user.save()
+        return user
+    return None
+
+@csrf_exempt
 def viz_list(request):
     user = request.user
     # if not user.is_authenticated():
@@ -41,7 +69,7 @@ def viz_list(request):
     else:
         return HttpResponse(status=404)
 
-
+@csrf_exempt
 def viz_new(request):
     user = request.user
     # if not user.is_authenticated():
@@ -70,7 +98,7 @@ def viz_new(request):
         fp.write(script)
     return HttpResponse()
 
-
+@csrf_exempt
 def viz_run(request):
     user = request.user
     # if not user.is_authenticated():

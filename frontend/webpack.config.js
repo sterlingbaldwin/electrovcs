@@ -4,6 +4,7 @@ var path = require("path");
 module.exports = {
     entry: ["babel-polyfill", "./src/index.js"],
     devtool: 'source-map',
+    mode: 'development',
     output: {
         path: __dirname + "/dist",
         filename: "Bundle.js"
@@ -21,7 +22,7 @@ module.exports = {
                                 'react',
                                 ['env', {
                                     "targets": {
-                                        "uglify": true
+                                        "uglify": false
                                     }
                                 }]
                             ]
