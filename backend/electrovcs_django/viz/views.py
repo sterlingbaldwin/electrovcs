@@ -72,17 +72,18 @@ def viz_list(request):
 @csrf_exempt
 def viz_new(request):
     user = request.user
-    # if not user.is_authenticated():
-    #     return HttpResponse(status=401)
+    #if not user.is_authenticated():
+    #     return HttpResponse(status=403)
     if request.method == 'GET':
         return HttpResponse(status=404)
 
     name = request.POST.get('name')
+    user = request.POST.get("user")
     new_viz_dir_path = os.path.abspath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), '..', 'data', user, name))
     new_vis_script_path = os.path.join(new_viz_dir_path, name + '.py')
     new_vis_png_path = new_vis_script_path = os.path.join(
-        new_viz_dir_path, name + '.png')
+        new_viz_dir_path, name)
     if not os.path.exists(new_viz_dir_path):
         os.makedirs(new_viz_dir_path)
 
@@ -92,21 +93,26 @@ def viz_new(request):
         return HttpResponse(status=401)
 
     canvas_name = left[0].split("=")[0].split('\n')[-1].strip()
-    script += "\n{}.png({}".format(canvas_name, new_vis_png_path)
+    script += "\n{}.png('{}')".format(canvas_name, new_vis_png_path)
 
-    with open(new_vis_script_path, 'r') as fp:
+    with open(new_vis_script_path+".py", 'w') as fp:
         fp.write(script)
     return HttpResponse()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 610ff09377f699ad61fd44425d3ba43e9cd5db72
 @csrf_exempt
 def viz_run(request):
-    user = request.user
+    #user = request.user
     # if not user.is_authenticated():
     #     return HttpResponse(status=401)
     if request.method == 'GET':
         return HttpResponse(status=404)
 
     name = request.POST.get('name')
+    user = request.POST.get("user")
     if not name:
         return HttpResponse(status=401)
     script_path = os.path.abspath(os.path.join(
